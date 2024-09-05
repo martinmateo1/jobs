@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from './supabaseClient';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./components/ui/Card";
+import { Badge } from "./components/ui/Badge";
+import { Skeleton } from "./components/ui/Skeleton";
 
 interface JobListing {
   company_name: string;
@@ -36,28 +39,36 @@ const JobList: React.FC = () => {
   }, []);
 
   return (
-    <div className="p-6 bg-white shadow-md rounded-md">
+    <div className="p-6">
       <h2 className="text-2xl font-semibold mb-4">Job Listings</h2>
       {loading ? (
-        <p>Loading jobs...</p>
+        <div className="space-y-4">
+          <Skeleton className="h-10 w-full" />
+          <Skeleton className="h-10 w-full" />
+          <Skeleton className="h-10 w-full" />
+        </div>
       ) : (
-        <ul>
+        <div className="space-y-6">
           {jobs.map((job, index) => (
-            <li key={index} className="mb-4 p-4 border rounded">
-              <h3 className="font-semibold">{job.role_needed} at {job.company_name}</h3>
-              <p><strong>Employment Mode:</strong> {job.employment_mode}</p>
-              <p><strong>Work Type:</strong> {job.work_type}</p>
-              <p><strong>Industry:</strong> {job.industry}</p>
-              <p><strong>Description:</strong> {job.job_description}</p>
-              <p><strong>Contact Email:</strong> {job.email_applicants_receiver}</p>
-              <div className="flex flex-wrap space-x-2 mt-2">
-                {job.keywords.map((keyword, index) => (
-                  <span key={index} className="bg-gray-200 p-2 rounded">{keyword}</span>
-                ))}
-              </div>
-            </li>
+            <Card key={index} className="shadow-md rounded-md">
+              <CardHeader>
+                <CardTitle>{job.role_needed} at {job.company_name}</CardTitle>
+                <CardDescription>Industry: {job.industry}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p><strong>Employment Mode:</strong> {job.employment_mode}</p>
+                <p><strong>Work Type:</strong> {job.work_type}</p>
+                <p><strong>Description:</strong> {job.job_description}</p>
+                <p><strong>Contact Email:</strong> {job.email_applicants_receiver}</p>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {job.keywords.map((keyword, index) => (
+                    <Badge key={index} className="bg-gray-200 text-sm">{keyword}</Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
