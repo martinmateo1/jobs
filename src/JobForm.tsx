@@ -190,7 +190,9 @@ const JobForm: React.FC = () => {
           className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         ></textarea>
       </div>
-
+      
+  
+  
       {/* Contact Email */}
       <div>
         <label htmlFor="email_applicants_receiver" className="block text-sm font-medium text-gray-700">Contact Email</label>
@@ -199,6 +201,34 @@ const JobForm: React.FC = () => {
           name="email_applicants_receiver"
           id="email_applicants_receiver"
           value={job.email_applicants_receiver}
+          onChange={handleChange}
+          required
+          placeholder="Enter Email"
+          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+      {/* Company Email */}
+      <div>
+        <label htmlFor="company_email" className="block text-sm font-medium text-gray-700">Company email</label>
+        <input
+          type="email"
+          name="company_email"
+          id="company_email"
+          value={job.company_email}
+          onChange={handleChange}
+          required
+          placeholder="Enter Email"
+          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+       {/* invoice Email */}
+       <div>
+        <label htmlFor="invoice_company_email" className="block text-sm font-medium text-gray-700">Invoice Company email</label>
+        <input
+          type="email"
+          name="invoice_company_email"
+          id="invoice_company_email"
+          value={job.invoice_company_email}
           onChange={handleChange}
           required
           placeholder="Enter Email"
