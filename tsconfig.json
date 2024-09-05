@@ -13,10 +13,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "baseUrl": "./", // Base URL for module resolution
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"], // Alias for everything in src/
-      "@/components/*": ["src/components/*"] // Alias for components directory
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"],

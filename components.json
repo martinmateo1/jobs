@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "default",
+  "style": "new-york",
   "rsc": false,
   "tsx": true,
   "tailwind": {
@@ -12,16 +12,9 @@
   },
   "aliases": {
     "components": "@/components",
+    "utils": "@/lib/utils",
     "ui": "@/components/ui",
     "lib": "@/lib",
     "hooks": "@/hooks"
-  },
-  "components": [
-    "input",
-    "textarea",
-    "select",
-    "button",
-    "badge"
-  ],
-  "directory": "src/components/ui"
+  }
 }

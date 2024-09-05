@@ -1,46 +1,42 @@
 import React, { useState } from 'react';
 import { supabase } from './supabaseClient';
-
-interface JobListing {
-  company_name: string;
-  role_needed: string;
-  employment_mode: 'full-time' | 'part-time' | 'flexible' | 'freelance';
-  work_type: 'presencial' | 'remoto' | 'hibrido';
-  industry: 'technology' | 'finance' | 'marketing' | 'other';
-  keywords: string[];
-  job_description: string;
-  applicants_contact_type: 'mail' | 'DMs';
-  email_applicants_receiver: string;
-  company_website?: string;
-  company_email?: string;
-  invoice_company_email?: string;
-  marketing_preferences?: string[];
-}
+import { Button } from "./components/ui/Button";
+import { Input } from "./components/ui/Input";
+import { Label } from "./components/ui/Label";
+import { Textarea } from "./components/ui/Textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./components/ui/Select";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./components/ui/Dialog";
 
 const JobForm: React.FC = () => {
-  const [job, setJob] = useState<JobListing>({
+  const [job, setJob] = useState({
     company_name: '',
     role_needed: '',
     employment_mode: 'full-time',
     work_type: 'presencial',
     industry: 'technology',
-    keywords: [],
+    keywords: [] as string[],
     job_description: '',
     applicants_contact_type: 'mail',
     email_applicants_receiver: '',
     company_website: '',
     company_email: '',
     invoice_company_email: '',
-    marketing_preferences: [],
+    marketing_preferences: [] as string[],
   });
 
   const [keywordInput, setKeywordInput] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>('');
 
-  // Handle input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    setJob((prevJob) => ({
+      ...prevJob,
+      [name]: value,
+    }));
+  };
+
+  const handleSelectChange = (name: keyof typeof job) => (value: string) => {
     setJob((prevJob) => ({
       ...prevJob,
       [name]: value,
@@ -57,7 +53,6 @@ const JobForm: React.FC = () => {
     }
   };
 
-  // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
@@ -95,9 +90,9 @@ const JobForm: React.FC = () => {
       <h2 className="text-2xl font-semibold text-center">Create a Job Listing</h2>
 
       {/* Company Name */}
-      <div>
-        <label htmlFor="company_name" className="block text-sm font-medium text-gray-700">Company Name</label>
-        <input
+      <div className="space-y-2">
+        <Label htmlFor="company_name">Company Name</Label>
+        <Input
           type="text"
           name="company_name"
           id="company_name"
@@ -105,14 +100,13 @@ const JobForm: React.FC = () => {
           onChange={handleChange}
           required
           placeholder="Enter Company Name"
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
 
       {/* Role Needed */}
-      <div>
-        <label htmlFor="role_needed" className="block text-sm font-medium text-gray-700">Role Needed</label>
-        <input
+      <div className="space-y-2">
+        <Label htmlFor="role_needed">Role Needed</Label>
+        <Input
           type="text"
           name="role_needed"
           id="role_needed"
@@ -120,83 +114,73 @@ const JobForm: React.FC = () => {
           onChange={handleChange}
           required
           placeholder="Enter Role"
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
 
       {/* Employment Mode */}
-      <div>
-        <label htmlFor="employment_mode" className="block text-sm font-medium text-gray-700">Employment Mode</label>
-        <select
-          name="employment_mode"
-          id="employment_mode"
-          value={job.employment_mode}
-          onChange={handleChange}
-          required
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-        >
-          <option value="full-time">Full-time</option>
-          <option value="part-time">Part-time</option>
-          <option value="flexible">Flexible</option>
-          <option value="freelance">Freelance</option>
-        </select>
+      <div className="space-y-2">
+        <Label htmlFor="employment_mode">Employment Mode</Label>
+        <Select value={job.employment_mode} onValueChange={handleSelectChange('employment_mode')}>
+          <SelectTrigger id="employment_mode">
+            <SelectValue placeholder="Select employment mode" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="full-time">Full-time</SelectItem>
+            <SelectItem value="part-time">Part-time</SelectItem>
+            <SelectItem value="flexible">Flexible</SelectItem>
+            <SelectItem value="freelance">Freelance</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       {/* Work Type */}
-      <div>
-        <label htmlFor="work_type" className="block text-sm font-medium text-gray-700">Work Type</label>
-        <select
-          name="work_type"
-          id="work_type"
-          value={job.work_type}
-          onChange={handleChange}
-          required
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-        >
-          <option value="presencial">Presencial</option>
-          <option value="remoto">Remoto</option>
-          <option value="hibrido">Híbrido</option>
-        </select>
+      <div className="space-y-2">
+        <Label htmlFor="work_type">Work Type</Label>
+        <Select value={job.work_type} onValueChange={handleSelectChange('work_type')}>
+          <SelectTrigger id="work_type">
+            <SelectValue placeholder="Select work type" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="presencial">Presencial</SelectItem>
+            <SelectItem value="remoto">Remoto</SelectItem>
+            <SelectItem value="hibrido">Híbrido</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       {/* Industry */}
-      <div>
-        <label htmlFor="industry" className="block text-sm font-medium text-gray-700">Industry</label>
-        <select
-          name="industry"
-          id="industry"
-          value={job.industry}
-          onChange={handleChange}
-          required
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-        >
-          <option value="technology">Technology</option>
-          <option value="finance">Finance</option>
-          <option value="marketing">Marketing</option>
-          <option value="other">Other</option>
-        </select>
+      <div className="space-y-2">
+        <Label htmlFor="industry">Industry</Label>
+        <Select value={job.industry} onValueChange={handleSelectChange('industry')}>
+          <SelectTrigger id="industry">
+            <SelectValue placeholder="Select industry" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="technology">Technology</SelectItem>
+            <SelectItem value="finance">Finance</SelectItem>
+            <SelectItem value="marketing">Marketing</SelectItem>
+            <SelectItem value="other">Other</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       {/* Job Description */}
-      <div>
-        <label htmlFor="job_description" className="block text-sm font-medium text-gray-700">Job Description</label>
-        <textarea
+      <div className="space-y-2">
+        <Label htmlFor="job_description">Job Description</Label>
+        <Textarea
           name="job_description"
           id="job_description"
           value={job.job_description}
           onChange={handleChange}
           required
           placeholder="Enter Job Description"
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-        ></textarea>
+        />
       </div>
-      
-  
-  
+
       {/* Contact Email */}
-      <div>
-        <label htmlFor="email_applicants_receiver" className="block text-sm font-medium text-gray-700">Contact Email</label>
-        <input
+      <div className="space-y-2">
+        <Label htmlFor="email_applicants_receiver">Contact Email</Label>
+        <Input
           type="email"
           name="email_applicants_receiver"
           id="email_applicants_receiver"
@@ -204,71 +188,62 @@ const JobForm: React.FC = () => {
           onChange={handleChange}
           required
           placeholder="Enter Email"
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
+
       {/* Company Email */}
-      <div>
-        <label htmlFor="company_email" className="block text-sm font-medium text-gray-700">Company email</label>
-        <input
+      <div className="space-y-2">
+        <Label htmlFor="company_email">Company Email</Label>
+        <Input
           type="email"
           name="company_email"
           id="company_email"
           value={job.company_email}
           onChange={handleChange}
           required
-          placeholder="Enter Email"
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter Company Email"
         />
       </div>
-       {/* invoice Email */}
-       <div>
-        <label htmlFor="invoice_company_email" className="block text-sm font-medium text-gray-700">Invoice Company email</label>
-        <input
+
+      {/* Invoice Company Email */}
+      <div className="space-y-2">
+        <Label htmlFor="invoice_company_email">Invoice Company Email</Label>
+        <Input
           type="email"
           name="invoice_company_email"
           id="invoice_company_email"
           value={job.invoice_company_email}
           onChange={handleChange}
           required
-          placeholder="Enter Email"
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter Invoice Email"
         />
       </div>
 
       {/* Company Website */}
-      <div>
-        <label htmlFor="company_website" className="block text-sm font-medium text-gray-700">Company Website</label>
-        <input
+      <div className="space-y-2">
+        <Label htmlFor="company_website">Company Website</Label>
+        <Input
           type="url"
           name="company_website"
           id="company_website"
           value={job.company_website}
           onChange={handleChange}
           placeholder="Enter Company Website"
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
 
       {/* Keywords */}
-      <div>
-        <label className="block text-sm font-medium text-gray-700">Keywords</label>
-        <div className="flex space-x-2 mt-1">
-          <input
-            type="text"
-            value={keywordInput}
-            onChange={(e) => setKeywordInput(e.target.value)}
-            placeholder="Enter Keyword"
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-          />
-          <button
-            onClick={handleAddKeyword}
-            type="button"
-            className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 focus:ring-2 focus:ring-blue-500"
-          >
-            Add Keyword
-          </button>
-        </div>
+      <div className="space-y-2">
+        <Label htmlFor="keywords">Keywords</Label>
+        <Input
+          type="text"
+          value={keywordInput}
+          onChange={(e) => setKeywordInput(e.target.value)}
+          placeholder="Enter Keyword"
+        />
+        <Button onClick={handleAddKeyword} type="button">
+          Add Keyword
+        </Button>
         <div className="mt-2 flex flex-wrap gap-2">
           {job.keywords.map((keyword, index) => (
             <span key={index} className="inline-block px-3 py-1 bg-gray-200 rounded-full text-sm font-medium text-gray-700">
@@ -279,15 +254,9 @@ const JobForm: React.FC = () => {
       </div>
 
       {/* Submit Button */}
-
-
-      <button
-        type="submit"
-        disabled={loading}
-        className="w-full py-3 px-6 bg-green-500 text-white rounded-md shadow-sm hover:bg-green-600 focus:ring-2 focus:ring-green-500"
-      >
+      <Button type="submit" disabled={loading}>
         {loading ? 'Creating...' : 'Create Job Listing'}
-      </button>
+      </Button>
 
       {/* Message */}
       {message && <p className="text-center text-green-600 mt-4">{message}</p>}
