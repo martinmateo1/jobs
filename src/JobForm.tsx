@@ -3,6 +3,7 @@ import { supabase } from './supabaseClient';
 import { Button } from "./components/ui/Button";
 import { Input } from "./components/ui/Input";
 import { Label } from "./components/ui/Label";
+import { RadioGroup, RadioGroupItem } from "./components/ui/RadioGroup";
 import { Textarea } from "./components/ui/Textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./components/ui/Select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./components/ui/Dialog";
@@ -133,20 +134,26 @@ const JobForm: React.FC = () => {
         </Select>
       </div>
 
-      {/* Work Type */}
-      <div className="space-y-2">
-        <Label htmlFor="work_type">Work Type</Label>
-        <Select value={job.work_type} onValueChange={handleSelectChange('work_type')}>
-          <SelectTrigger id="work_type">
-            <SelectValue placeholder="Select work type" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="presencial">Presencial</SelectItem>
-            <SelectItem value="remoto">Remoto</SelectItem>
-            <SelectItem value="hibrido">Híbrido</SelectItem>
-          </SelectContent>
-        </Select>
+     {/* Work Type */}
+<div className="space-y-2">
+  <Label htmlFor="work_type">Work Type</Label>
+  <RadioGroup value={job.work_type} onValueChange={handleSelectChange('work_type')}>
+    <div className="flex flex-col space-y-2">
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value="presencial" id="presencial" />
+        <Label htmlFor="presencial">Presencial</Label>
       </div>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value="remoto" id="remoto" />
+        <Label htmlFor="remoto">Remoto</Label>
+      </div>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value="hibrido" id="hibrido" />
+        <Label htmlFor="hibrido">Híbrido</Label>
+      </div>
+    </div>
+  </RadioGroup>
+</div>
 
       {/* Industry */}
       <div className="space-y-2">
