@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 import { supabase } from './supabaseClient';
 import { Button } from "./components/ui/Button";
 import { Input } from "./components/ui/Input";
@@ -12,7 +15,25 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./components/u
 import MarketingPreferences from "./MarketingPreferences"; 
 import FeatureList from './FeatureList'; 
 import { useNavigate } from 'react-router-dom'; 
-import { toast } from 'sonner'; // Import the toast function
+import { toast } from 'sonner';
+
+
+const jobSchema = z.object({
+  company_name: z.string().min(1, 'Company name is required'),
+  role_needed: z.string().min(1, 'Role needed is required'),
+  employment_mode: z.enum(['full-time', 'part-time', 'flexible', 'freelance']),
+  work_type: z.enum(['presencial', 'remoto', 'hibrido']),
+  industry: z.enum(['technology', 'finance', 'marketing', 'other']),
+  job_description: z.string().min(10, 'Job description must be at least 10 characters'),
+  email_applicants_receiver: z.string().email('Invalid email address'),
+  company_website: z.string().url('Invalid URL').optional(),
+  company_email: z.string().email('Invalid email address'),
+  invoice_company_email: z.string().email('Invalid email address'),
+  marketing_preferences: z.array(z.string()).optional(),
+  keywords: z.array(z.string()).max(10, 'Maximum of 10 keywords allowed').optional(),
+});
+
+type JobFormSchema = z.infer<typeof jobSchema>;
 
 const features = [
   {
@@ -143,6 +164,7 @@ const JobForm: React.FC = () => {
       {/* Company Name */}
         <div className="space-y-2">
           <Label htmlFor="company_name">Nombre de tu compañia</Label>
+          
           <Input
             type="text"
             name="company_name"
@@ -351,10 +373,10 @@ const JobForm: React.FC = () => {
     
     </div>
     <div className="col-span-5">
-      <p className="text-sm text-gray-900">👍 Tu anuncio estará disponible por 180 días</p>
+      <p className="text-xs text-gray-500">👍 Tu anuncio estará disponible por 180 días, siempre podés pausarlo</p>
     <Card className="mt-4">
       <CardHeader>
-        <CardTitle>Preferencias de Marketing</CardTitle>
+        <CardTitle>Visibility Booster</CardTitle>
       </CardHeader>
       <CardContent>
           {/* Marketing Preferences */}
