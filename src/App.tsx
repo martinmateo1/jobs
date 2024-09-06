@@ -9,8 +9,10 @@ import './index.css'; // Import Tailwind CSS
 const App: React.FC = () => {
   return (
     <Router>
-    <div className="container mx-auto p-6">
       <Menu /> {/* Include the Menu at the top */}
+    <div className="container mx-auto p-6">
+      
+      
       <Routes>
         <Route
           path="/create-job"
@@ -27,6 +29,7 @@ const App: React.FC = () => {
       </Routes>
     </div>
   </Router>
+  
 );
 };
 

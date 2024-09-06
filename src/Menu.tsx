@@ -6,7 +6,7 @@ import { Button } from "./components/ui/Button"
 const Menu: React.FC = () => {
   return (
     <header className="top-0 left-0 z-50 w-full bg-background shadow-sm">
-      <div className="container flex h-16 items-center justify-between px-4 md:px-6">
+      <div className="flex h-16 items-center justify-between px-4 md:px-6">
         {/* Logo and title */}
         
         {/* Main Navigation using NavigationMenu from shadcn */}

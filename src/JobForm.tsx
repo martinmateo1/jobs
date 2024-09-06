@@ -5,7 +5,7 @@ import { Input } from "./components/ui/Input";
 import { Label } from "./components/ui/Label";
 import { RadioGroup, RadioGroupItem } from "./components/ui/RadioGroup";
 import { Textarea } from "./components/ui/Textarea";
-import { Card, CardContent, CardHeader } from "./components/ui/Card";
+import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/Card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./components/ui/Select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./components/ui/Dialog";
 
@@ -88,10 +88,14 @@ const JobForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl">
-      <Card className="mt-8">
+    <div className="grid grid-cols-12 gap-12 p-6">
+       <div className="col-span-7">
+    <form onSubmit={handleSubmit}>
+      <Card>
         <CardHeader>
+          <CardTitle>
           Información general
+          </CardTitle>
         </CardHeader>
       <CardContent>
         <div className="space-y-6">
@@ -212,20 +216,22 @@ const JobForm: React.FC = () => {
 
       <Card className="mt-8">
         <CardHeader>
-          Información general
+          <CardTitle>
+          Detalles del rol
+          </CardTitle>
         </CardHeader>
        <CardContent>
         <div className="space-y-6">
           {/* Job Description */}
           <div className="space-y-2">
-            <Label htmlFor="job_description">Detalles del Rol</Label>
+            <Label htmlFor="job_description">Descripción del rol</Label>
             <Textarea
               name="job_description"
               id="job_description"
               value={job.job_description}
               onChange={handleChange}
               required
-              placeholder="Enter Job Description"
+              placeholder="Acá iría un wysigywgywgy"
             />
           </div>
           {/* Contact Email */}
@@ -248,7 +254,9 @@ const JobForm: React.FC = () => {
 
       <Card className="mt-8">
         <CardHeader>
-          Información general
+          <CardTitle>
+          Compañia
+          </CardTitle>
         </CardHeader>
        <CardContent>
         <div className="space-y-6">
@@ -309,6 +317,20 @@ const JobForm: React.FC = () => {
       {/* Message */}
       {message && <p className="text-center text-green-600 mt-4">{message}</p>}
     </form>
+    </div>
+    <div className="col-span-5">
+      <p className="text-sm text-gray-900">👍 Tu anuncio estará disponible por 180 días</p>
+    <Card className="p-6 mt-4">
+      <CardHeader>
+        <CardTitle>Preferencias de Marketing</CardTitle>
+      </CardHeader>
+      <CardContent>
+        {/* Your job listings component or content here */}
+      </CardContent>
+    </Card>
+  </div>
+</div>
+    
   );
 };
 
