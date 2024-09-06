@@ -86,8 +86,19 @@ const JobDetail: React.FC = () => {
             >
               Aplicar a esta búsqueda
             </Button>
+            <p className="text-sm text-gray-900 mt-3 text-center">👆 644 clickearon en este botón</p>
           </CardContent>
         </Card>
+        <div className="mt-4">
+            <h3 className="text-xl font-bold text-gray-900 mb-4 mb-1">{job.company_name}</h3>
+            <a 
+                href={job.company_website} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-blue-600 hover:underline">
+                {job.company_website}
+            </a>
+        </div>
       </div>
     </div>
   );

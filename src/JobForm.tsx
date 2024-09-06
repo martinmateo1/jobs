@@ -9,9 +9,28 @@ import { Textarea } from "./components/ui/Textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/Card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./components/ui/Select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./components/ui/Dialog";
-import MarketingPreferences from "./MarketingPreferences"; // Adjust the path as needed
+import MarketingPreferences from "./MarketingPreferences"; 
+import FeatureList from './FeatureList'; 
+import { useNavigate } from 'react-router-dom'; 
+import { toast } from 'sonner'; // Import the toast function
 
-
+const features = [
+  {
+    emoji: '✅',
+    title: 'SEO-Friendly Job Posting',
+    description: 'Your job post will be optimized for search engines, increasing its visibility and reach to potential candidates.',
+  },
+  {
+    emoji: '✅',
+    title: 'Easy Social Media Sharing',
+    description: 'Share your job posting effortlessly on LinkedIn, Twitter, and other social media platforms to attract a wider audience.',
+  },
+  {
+    emoji: '✅',
+    title: 'Editable After Publishing',
+    description: 'You can edit your job posting even after it has been published, ensuring it stays accurate and up-to-date.',
+  },
+];
 const JobForm: React.FC = () => {
   const [job, setJob] = useState({
     company_name: '',
@@ -32,6 +51,7 @@ const JobForm: React.FC = () => {
   const [keywordInput, setKeywordInput] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>('');
+  const navigate = useNavigate(); // Initialize the useNavigate hook
   const handleMarketingPreferencesChange = (preferences: string[]) => {
     setJob((prevJob) => ({
       ...prevJob,
@@ -68,37 +88,47 @@ const JobForm: React.FC = () => {
     setLoading(true);
     setMessage('');
 
-    const { data, error } = await supabase.from('job_listings').insert([job]);
+  const { data, error } = await supabase.from('job_listings').insert([job]).select(); // Include select to get the inserted job details
 
-    if (error) {
-      console.error('Error creating job listing:', error);
-      setMessage('Error creating job listing.');
-    } else {
-      console.log('Job listing created:', data);
-      setMessage('Job listing created successfully!');
-      setJob({
-        company_name: '',
-        role_needed: '',
-        employment_mode: 'full-time',
-        work_type: 'presencial',
-        industry: 'technology',
-        keywords: [],
-        job_description: '',
-        applicants_contact_type: 'mail',
-        email_applicants_receiver: '',
-        company_website: '',
-        company_email: '',
-        invoice_company_email: '',
-        marketing_preferences: [],
-      });
-    }
-    setLoading(false);
+  if (error) {
+    console.error('Error creating job listing:', error);
+    toast.error('Error creating job listing.'); // Show error toast
+  } else if (data && data.length > 0) {
+    console.log('Job listing created:', data);
+    toast.success('¡Creaste la publicación con éxito!', { duration: 5000, description: 'Monday, January 3rd at 6:00pm' }); // Show success toast
+
+    setJob({
+      company_name: '',
+      role_needed: '',
+      employment_mode: 'full-time',
+      work_type: 'presencial',
+      industry: 'technology',
+      keywords: [],
+      job_description: '',
+      applicants_contact_type: 'mail',
+      email_applicants_receiver: '',
+      company_website: '',
+      company_email: '',
+      invoice_company_email: '',
+      marketing_preferences: [],
+    });
+
+    // Ensure that data is not null before accessing it
+    const jobId = data[0].id; // Assuming the created job has an ID field
+    navigate(`/job/${jobId}`); // Navigate to the job detail page
+  } else {
+    console.error('Failed to retrieve the job ID.');
+    setMessage('Failed to retrieve the job ID.');
+  }
+
+  setLoading(false);
   };
 
   return (
+    <form onSubmit={handleSubmit}>
     <div className="grid grid-cols-12 gap-12 p-6">
        <div className="col-span-7">
-    <form onSubmit={handleSubmit}>
+    
       <Card>
         <CardHeader>
           <CardTitle>
@@ -315,7 +345,7 @@ const JobForm: React.FC = () => {
 </Card>
       {/* Message */}
       {message && <p className="text-center text-green-600 mt-4">{message}</p>}
-    </form>
+    
     </div>
     <div className="col-span-5">
       <p className="text-sm text-gray-900">👍 Tu anuncio estará disponible por 180 días</p>
@@ -337,33 +367,15 @@ const JobForm: React.FC = () => {
       className="mt-6 w-full py-7 text-lg" // Adjust the width, padding, and font size for a larger button
       type="submit" 
       disabled={loading}>
-      {loading ? 'Creating...' : 'nofunciona - Publicar tu búsqueda por $12'}
+      {loading ? 'Creating...' : 'Publicar tu búsqueda por $12'}
     </Button>
-      <div className="w-full max-w-2xl mx-auto mt-8">
-        <ul className="space-y-4">
-          <li className="flex items-start space-x-2">
-            <span className="text-green-500">✅</span>
-            <span className="text-gray-700">
-              <strong>SEO-Friendly Job Posting:</strong> Your job post will be optimized for search engines, increasing its visibility and reach to potential candidates.
-            </span>
-          </li>
-          <li className="flex items-start space-x-2">
-            <span className="text-green-500">✅</span>
-            <span className="text-gray-700">
-              <strong>Easy Social Media Sharing:</strong> Share your job posting effortlessly on LinkedIn, Twitter, and other social media platforms to attract a wider audience.
-            </span>
-          </li>
-          <li className="flex items-start space-x-2">
-            <span className="text-green-500">✅</span>
-            <span className="text-gray-700">
-              <strong>Editable After Publishing:</strong> You can edit your job posting even after it has been published, ensuring it stays accurate and up-to-date.
-            </span>
-          </li>
-        </ul>
-      </div>
+    <div className="w-full max-w-2xl mx-auto mt-8">
+      <FeatureList features={features} />
+    </div>
+    
   </div>
 </div>
-    
+</form>
   );
 };
 
