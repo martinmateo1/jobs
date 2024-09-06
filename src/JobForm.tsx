@@ -95,7 +95,10 @@ const JobForm: React.FC = () => {
     toast.error('Error creating job listing.'); // Show error toast
   } else if (data && data.length > 0) {
     console.log('Job listing created:', data);
-    toast.success('¡Creaste la publicación con éxito!', { duration: 5000, description: 'Monday, January 3rd at 6:00pm' }); // Show success toast
+    toast.success('¡Creaste la publicación con éxito!', { 
+      duration: 5000, 
+      description: 'Tu trabajo fue creado con éxito y estará visible en breve' 
+    });
 
     setJob({
       company_name: '',
