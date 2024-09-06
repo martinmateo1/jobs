@@ -3,11 +3,14 @@ import { supabase } from './supabaseClient';
 import { Button } from "./components/ui/Button";
 import { Input } from "./components/ui/Input";
 import { Label } from "./components/ui/Label";
+import { Switch } from "./components/ui/Switch";
 import { RadioGroup, RadioGroupItem } from "./components/ui/RadioGroup";
 import { Textarea } from "./components/ui/Textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/Card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./components/ui/Select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./components/ui/Dialog";
+import MarketingPreferences from "./MarketingPreferences"; // Adjust the path as needed
+
 
 const JobForm: React.FC = () => {
   const [job, setJob] = useState({
@@ -29,7 +32,12 @@ const JobForm: React.FC = () => {
   const [keywordInput, setKeywordInput] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>('');
-
+  const handleMarketingPreferencesChange = (preferences: string[]) => {
+    setJob((prevJob) => ({
+      ...prevJob,
+      marketing_preferences: preferences,
+    }));
+  };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setJob((prevJob) => ({
@@ -325,7 +333,12 @@ const JobForm: React.FC = () => {
         <CardTitle>Preferencias de Marketing</CardTitle>
       </CardHeader>
       <CardContent>
-        {/* Your job listings component or content here */}
+          {/* Marketing Preferences */}
+     <MarketingPreferences
+        selectedPreferences={job.marketing_preferences}
+        onChange={handleMarketingPreferencesChange}
+      />
+        
       </CardContent>
     </Card>
   </div>
