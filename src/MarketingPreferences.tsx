@@ -11,6 +11,7 @@ import {
   FormLabel,
 } from "./components/ui/Form";
 import { Switch } from "./components/ui/Switch";
+import { Badge } from "./components/ui/Badge";
 
 // Define a schema for validation
 const FormSchema = z.object({
@@ -54,7 +55,7 @@ const MarketingPreferences: React.FC<{
                 <div className="space-y-0.5">
                   <FormLabel className="text-base text-sm">✨ Mostrar el logo de mi empresa (+$1)</FormLabel>
                   <FormDescription>
-                    Allow marketing using the company logo.
+                  Tu logo estará visibile en la publicación
                   </FormDescription>
                 </div>
                 <FormControl>
@@ -74,9 +75,9 @@ const MarketingPreferences: React.FC<{
             render={({ field }) => (
               <FormItem className="flex flex-row items-center justify-between">
                 <div className="space-y-0.5">
-                  <FormLabel className="text-base text-sm">🚀 Enviar email a nuestra base de datos (+$5)</FormLabel>
+                  <FormLabel className="text-base text-sm">🚀 Enviar publicación a candidatos (+$5)</FormLabel>
                   <FormDescription>
-                    Receive emails about new products, features, and more.
+                    Nuestra base cuenta con mas de 5.000 candidatos
                   </FormDescription>
                 </div>
                 <FormControl>
@@ -96,9 +97,9 @@ const MarketingPreferences: React.FC<{
             render={({ field }) => (
               <FormItem className="flex flex-row items-center justify-between">
                 <div className="space-y-0.5">
-                  <FormLabel className="text-base text-sm">🏹 Agregarlo a búsquedas de la compañia (+1$)</FormLabel>
+                  <FormLabel className="text-base text-sm">🏹 Agregar a mi landing ($10/mes)<Badge className="ml-2" variant="destructive">Business</Badge></FormLabel>
                   <FormDescription>
-                    Display the company landing page.
+                    Tendrás tu publicación en una landing específica para tu empresa y podrás integrarla en tus sistemas 
                   </FormDescription>
                 </div>
                 <FormControl>
