@@ -42,11 +42,11 @@ const JobList: React.FC = () => {
     <div className="p-6">
       <h2 className="text-2xl font-semibold mb-4">Job Listings</h2>
       {loading ? (
-        <div className="space-y-4">
-          <Skeleton className="h-10 w-full" />
-          <Skeleton className="h-10 w-full" />
-          <Skeleton className="h-10 w-full" />
-        </div>
+       <div className="flex flex-col space-y-3">
+        <Skeleton className="h-40 w-full" />
+        <Skeleton className="h-40 w-full" />
+        <Skeleton className="h-40 w-full" />
+      </div>
       ) : (
         <div className="space-y-6">
           {jobs.map((job, index) => (
