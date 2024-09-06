@@ -38,18 +38,18 @@ type JobFormSchema = z.infer<typeof jobSchema>;
 const features = [
   {
     emoji: '✅',
-    title: 'SEO-Friendly Job Posting',
-    description: 'Your job post will be optimized for search engines, increasing its visibility and reach to potential candidates.',
+    title: 'Publicación de empleo optimizada para SEO',
+    description: 'Tu publicación será optimizada para los motores de búsqueda, aumentando su visibilidad y alcance a posibles candidatos.',
   },
   {
     emoji: '✅',
-    title: 'Easy Social Media Sharing',
-    description: 'Share your job posting effortlessly on LinkedIn, Twitter, and other social media platforms to attract a wider audience.',
+    title: 'Fácil de compartir en redes sociales',
+    description: 'Comparte tu oferta de trabajo fácilmente en LinkedIn, Twitter y otras plataformas sociales para atraer a una audiencia más amplia.',
   },
   {
     emoji: '✅',
-    title: 'Editable After Publishing',
-    description: 'You can edit your job posting even after it has been published, ensuring it stays accurate and up-to-date.',
+    title: 'Editable After Editable después de la publicación',
+    description: 'Podés editar tu publicación de empleo incluso después de haberla publicado, asegurándote de que siempre esté precisa y actualizada.',
   },
 ];
 const JobForm: React.FC = () => {
