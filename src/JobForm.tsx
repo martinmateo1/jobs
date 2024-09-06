@@ -319,7 +319,7 @@ const JobForm: React.FC = () => {
     </div>
     <div className="col-span-5">
       <p className="text-sm text-gray-900">👍 Tu anuncio estará disponible por 180 días</p>
-    <Card className=" mt-4">
+    <Card className="mt-4">
       <CardHeader>
         <CardTitle>Preferencias de Marketing</CardTitle>
       </CardHeader>
@@ -337,7 +337,7 @@ const JobForm: React.FC = () => {
       className="mt-6 w-full py-7 text-lg" // Adjust the width, padding, and font size for a larger button
       type="submit" 
       disabled={loading}>
-      {loading ? 'Creating...' : 'Publicar tu búsqueda por $12'}
+      {loading ? 'Creating...' : 'nofunciona - Publicar tu búsqueda por $12'}
     </Button>
       <div className="w-full max-w-2xl mx-auto mt-8">
         <ul className="space-y-4">

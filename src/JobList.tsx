@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import { supabase } from './supabaseClient';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./components/ui/Card";
 import { Badge } from "./components/ui/Badge";
 import { Skeleton } from "./components/ui/Skeleton";
 
 interface JobListing {
+  id: number; // Assuming each job has an ID
   company_name: string;
   role_needed: string;
   employment_mode: 'full-time' | 'part-time' | 'flexible' | 'freelance';
@@ -42,17 +44,20 @@ const JobList: React.FC = () => {
     <div className="p-6">
       <h2 className="text-2xl font-semibold mb-4">Job Listings</h2>
       {loading ? (
-       <div className="flex flex-col space-y-3">
-        <Skeleton className="h-40 w-full" />
-        <Skeleton className="h-40 w-full" />
-        <Skeleton className="h-40 w-full" />
-      </div>
+        <div className="flex flex-col space-y-3">
+          <Skeleton className="h-40 w-full" />
+          <Skeleton className="h-40 w-full" />
+          <Skeleton className="h-40 w-full" />
+        </div>
       ) : (
         <div className="space-y-6">
-          {jobs.map((job, index) => (
-            <Card key={index} className="shadow-md rounded-md">
+          {jobs.map((job) => (
+            <Link to={`/job/${job.id}`}>
+            <Card key={job.id} className="shadow-md rounded-md mt-6 transition transform hover:shadow-lg hover:-translate-y-1 hover:bg-gray-50">
               <CardHeader>
-                <CardTitle>{job.role_needed} at {job.company_name}</CardTitle>
+                <CardTitle>
+                    {job.role_needed} at {job.company_name}
+                </CardTitle>
                 <CardDescription>Industry: {job.industry}</CardDescription>
               </CardHeader>
               <CardContent>
@@ -67,6 +72,7 @@ const JobList: React.FC = () => {
                 </div>
               </CardContent>
             </Card>
+            </Link>
           ))}
         </div>
       )}
@@ -74,5 +80,4 @@ const JobList: React.FC = () => {
   );
 };
 
-// Export the component as default
 export default JobList;

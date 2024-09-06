@@ -31,27 +31,6 @@ const Menu: React.FC = () => {
             {/* New additional navigation items */}
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link to="/" className="text-sm font-medium hover:underline hover:underline-offset-4">
-                  Home
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link to="/about" className="text-sm font-medium hover:underline hover:underline-offset-4">
-                  About
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link to="/services" className="text-sm font-medium hover:underline hover:underline-offset-4">
-                  Services
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
                 <Link to="/contact" className="text-sm font-medium hover:underline hover:underline-offset-4">
                   Contact
                 </Link>
