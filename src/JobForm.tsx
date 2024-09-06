@@ -281,7 +281,7 @@ const JobForm: React.FC = () => {
           />
           <p className="text-xs text-gray-500">Twitter username without @. Not required, but used to tag your company when we tweet out your job post.</p>
         </div>
-      {/* Company Email */}
+        {/* Company Email */}
         <div className="space-y-2">
           <Label htmlFor="company_email">Email de la empresa (se mantiene privado y utilizado para invoices + edición)</Label>
           <Input
@@ -296,10 +296,10 @@ const JobForm: React.FC = () => {
           <p className="text-xs text-gray-500">¡Asegúrate de que este correo electrónico sea accesible para ti! Lo utilizamos para enviar la factura y el enlace de edición. No podemos ni reenviaremos esto manualmente. Si usas el dominio de tu empresa (el mismo que el nombre de la empresa), mostraremos una etiqueta [Verificado] en tu oferta de trabajo.</p>
         </div>
 
-      {/* Invoice Company Email */}
-      <div className="space-y-2">
-        <Label htmlFor="invoice_company_email">📬 Email para recibir invoices</Label>
-        <Input
+        {/* Invoice Company Email */}
+        <div className="space-y-2">
+          <Label htmlFor="invoice_company_email">📬 Email para recibir invoices</Label>
+          <Input
           type="email"
           name="invoice_company_email"
           id="invoice_company_email"
@@ -311,24 +311,15 @@ const JobForm: React.FC = () => {
         <p className="text-xs text-gray-500">También enviamos una copia de la factura y el enlace de edición aquí. Puedes poner el correo electrónico de tu departamento de finanzas o del contador de gastos para que reciban una copia de la factura para la contabilidad.</p>
       </div>
     </div>
-</CardContent>
+  </CardContent>
 </Card>
-      
-
-      
-
-      {/* Submit Button */}
-      <Button className="mt-8" type="submit" disabled={loading}>
-        {loading ? 'Creating...' : 'Create Job Listing'}
-      </Button>
-
       {/* Message */}
       {message && <p className="text-center text-green-600 mt-4">{message}</p>}
     </form>
     </div>
     <div className="col-span-5">
       <p className="text-sm text-gray-900">👍 Tu anuncio estará disponible por 180 días</p>
-    <Card className="p-6 mt-4">
+    <Card className=" mt-4">
       <CardHeader>
         <CardTitle>Preferencias de Marketing</CardTitle>
       </CardHeader>
@@ -341,6 +332,35 @@ const JobForm: React.FC = () => {
         
       </CardContent>
     </Card>
+    {/* Submit Button */}
+    <Button 
+      className="mt-6 w-full py-7 text-lg" // Adjust the width, padding, and font size for a larger button
+      type="submit" 
+      disabled={loading}>
+      {loading ? 'Creating...' : 'Publicar tu búsqueda por $12'}
+    </Button>
+      <div className="w-full max-w-2xl mx-auto mt-8">
+        <ul className="space-y-4">
+          <li className="flex items-start space-x-2">
+            <span className="text-green-500">✅</span>
+            <span className="text-gray-700">
+              <strong>SEO-Friendly Job Posting:</strong> Your job post will be optimized for search engines, increasing its visibility and reach to potential candidates.
+            </span>
+          </li>
+          <li className="flex items-start space-x-2">
+            <span className="text-green-500">✅</span>
+            <span className="text-gray-700">
+              <strong>Easy Social Media Sharing:</strong> Share your job posting effortlessly on LinkedIn, Twitter, and other social media platforms to attract a wider audience.
+            </span>
+          </li>
+          <li className="flex items-start space-x-2">
+            <span className="text-green-500">✅</span>
+            <span className="text-gray-700">
+              <strong>Editable After Publishing:</strong> You can edit your job posting even after it has been published, ensuring it stays accurate and up-to-date.
+            </span>
+          </li>
+        </ul>
+      </div>
   </div>
 </div>
     
