@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Menu from './Menu'; // Import the Menu component
 import JobForm from './JobForm';
 import JobList from './JobList';
 import { Card, CardContent } from "./components/ui/Card";
 import './index.css'; // Import Tailwind CSS
-import Menu from './Menu'; // Import the Menu component
 
 const App: React.FC = () => {
   return (
@@ -15,21 +15,13 @@ const App: React.FC = () => {
         <Route
           path="/create-job"
           element={
-            <Card className="shadow-md">
-              <CardContent>
-                <JobForm />
-              </CardContent>
-            </Card>
+            <JobForm />
           }
         />
         <Route
           path="/job-listings"
           element={
-            <Card className="shadow-md">
-              <CardContent>
-                <JobList />
-              </CardContent>
-            </Card>
+            <JobList />
           }
         />
       </Routes>

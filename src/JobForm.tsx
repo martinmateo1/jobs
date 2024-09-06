@@ -5,6 +5,7 @@ import { Input } from "./components/ui/Input";
 import { Label } from "./components/ui/Label";
 import { RadioGroup, RadioGroupItem } from "./components/ui/RadioGroup";
 import { Textarea } from "./components/ui/Textarea";
+import { Card, CardContent, CardHeader } from "./components/ui/Card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./components/ui/Select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./components/ui/Dialog";
 
@@ -87,134 +88,201 @@ const JobForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl p-6 bg-white shadow-md rounded-lg space-y-6">
-      <h2 className="text-2xl font-semibold text-center">Create a Job Listing</h2>
-
+    <form onSubmit={handleSubmit} className="max-w-xl">
+      <Card className="mt-8">
+        <CardHeader>
+          Información general
+        </CardHeader>
+      <CardContent>
+        <div className="space-y-6">
       {/* Company Name */}
-      <div className="space-y-2">
-        <Label htmlFor="company_name">Company Name</Label>
-        <Input
-          type="text"
-          name="company_name"
-          id="company_name"
-          value={job.company_name}
-          onChange={handleChange}
-          required
-          placeholder="Enter Company Name"
-        />
-      </div>
+        <div className="space-y-2">
+          <Label htmlFor="company_name">Nombre de tu compañia</Label>
+          <Input
+            type="text"
+            name="company_name"
+            id="company_name"
+            value={job.company_name}
+            onChange={handleChange}
+            required
+            placeholder="Enter Company Name"
+          />
+          <p className="text-xs text-gray-500">
+          Your company's brand/trade name: without Inc., Ltd., B.V., Pte., etc.
+          </p>
+        </div>
 
-      {/* Role Needed */}
-      <div className="space-y-2">
-        <Label htmlFor="role_needed">Role Needed</Label>
-        <Input
-          type="text"
-          name="role_needed"
-          id="role_needed"
-          value={job.role_needed}
-          onChange={handleChange}
-          required
-          placeholder="Enter Role"
-        />
-      </div>
+        {/* Role Needed */}
+        <div className="space-y-2">
+          <Label htmlFor="role_needed">Posición que estás buscando</Label>
+          <Input
+            type="text"
+            name="role_needed"
+            id="role_needed"
+            value={job.role_needed}
+            onChange={handleChange}
+            required
+            placeholder="Enter Role"
+          />
+          <p className="text-xs text-gray-500">
+            Por favor, especifica un único puesto de trabajo como "Gerente de Marketing" o "Desarrollador Node JS", no una frase como "Buscando PM / Biz Dev / Manager". Sabemos que tu trabajo es importante, pero por favor NO ESCRIBAS TODO EN MAYÚSCULAS. Si publicas varios roles, crea varias publicaciones de trabajo. Una publicación de trabajo está limitada a un solo puesto.
+          </p>
+        </div>
 
-      {/* Employment Mode */}
-      <div className="space-y-2">
-        <Label htmlFor="employment_mode">Employment Mode</Label>
-        <Select value={job.employment_mode} onValueChange={handleSelectChange('employment_mode')}>
-          <SelectTrigger id="employment_mode">
-            <SelectValue placeholder="Select employment mode" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="full-time">Full-time</SelectItem>
-            <SelectItem value="part-time">Part-time</SelectItem>
-            <SelectItem value="flexible">Flexible</SelectItem>
-            <SelectItem value="freelance">Freelance</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
+        {/* Employment Mode */}
+        <div className="space-y-2">
+          <Label htmlFor="employment_mode">Modalidad de empleo</Label>
+          <Select value={job.employment_mode} onValueChange={handleSelectChange('employment_mode')}>
+            <SelectTrigger id="employment_mode">
+              <SelectValue placeholder="Select employment mode" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="full-time">Full-time</SelectItem>
+              <SelectItem value="part-time">Part-time</SelectItem>
+              <SelectItem value="flexible">Flexible</SelectItem>
+              <SelectItem value="freelance">Freelance</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
 
-     {/* Work Type */}
-<div className="space-y-2">
-  <Label htmlFor="work_type">Work Type</Label>
-  <RadioGroup value={job.work_type} onValueChange={handleSelectChange('work_type')}>
-    <div className="flex flex-col space-y-2">
-      <div className="flex items-center space-x-2">
-        <RadioGroupItem value="presencial" id="presencial" />
-        <Label htmlFor="presencial">Presencial</Label>
-      </div>
-      <div className="flex items-center space-x-2">
-        <RadioGroupItem value="remoto" id="remoto" />
-        <Label htmlFor="remoto">Remoto</Label>
-      </div>
-      <div className="flex items-center space-x-2">
-        <RadioGroupItem value="hibrido" id="hibrido" />
-        <Label htmlFor="hibrido">Híbrido</Label>
-      </div>
-    </div>
-  </RadioGroup>
-</div>
+      {/* Work Type */}
+        <div className="space-y-2">
+          <Label htmlFor="work_type">Forma de trabajo</Label>
+          <RadioGroup value={job.work_type} onValueChange={handleSelectChange('work_type')}>
+            <div className="flex flex-col space-y-2">
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="presencial" id="presencial" />
+                <Label htmlFor="presencial">Presencial</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="remoto" id="remoto" />
+                <Label htmlFor="remoto">Remoto</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="hibrido" id="hibrido" />
+                <Label htmlFor="hibrido">Híbrido</Label>
+              </div>
+            </div>
+          </RadioGroup>
+        </div>
 
-      {/* Industry */}
-      <div className="space-y-2">
-        <Label htmlFor="industry">Industry</Label>
-        <Select value={job.industry} onValueChange={handleSelectChange('industry')}>
-          <SelectTrigger id="industry">
-            <SelectValue placeholder="Select industry" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="technology">Technology</SelectItem>
-            <SelectItem value="finance">Finance</SelectItem>
-            <SelectItem value="marketing">Marketing</SelectItem>
-            <SelectItem value="other">Other</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
+        {/* Industry */}
+        <div className="space-y-2">
+          <Label htmlFor="industry">Area o industria</Label>
+          <Select value={job.industry} onValueChange={handleSelectChange('industry')}>
+            <SelectTrigger id="industry">
+              <SelectValue placeholder="Select industry" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="technology">Technology</SelectItem>
+              <SelectItem value="finance">Finance</SelectItem>
+              <SelectItem value="marketing">Marketing</SelectItem>
+              <SelectItem value="other">Other</SelectItem>
+            </SelectContent>
+          </Select>
+          <p className="text-xs text-gray-500">Esta etiqueta principal se muestra primero y aumenta la visibilidad en las secciones principales. Sin embargo, tu trabajo se muestra en cada página que tenga esta etiqueta. Por ejemplo, si lo etiquetas como PHP, aparecerá en Trabajos Remotos de PHP, etc.</p>
+        </div>
+        
+        {/* Keywords */}
+        <div className="space-y-2">
+          <Label htmlFor="keywords">Keywords</Label>
+          <Input
+            type="text"
+            value={keywordInput}
+            onChange={(e) => setKeywordInput(e.target.value)}
+            placeholder="Enter Keyword"
+          />
+          
+          <div className="mt-2 flex flex-wrap gap-2">
+            {job.keywords.map((keyword, index) => (
+              <span key={index} className="inline-block px-3 py-1 bg-gray-200 rounded-full text-sm font-medium text-gray-700">
+                {keyword}
+              </span>
+            ))}
+          </div>
+          <p className="text-xs text-gray-500">Se prefieren etiquetas cortas. Utiliza etiquetas como la industria y la pila tecnológica. Las primeras 3 o 4 etiquetas se muestran en el sitio; las demás no, pero el trabajo aparecerá en cada página específica de la etiqueta (como /remote-react-jobs). También, a veces generamos etiquetas automáticamente después de que publiques o edites para complementar.</p>
+          <Button onClick={handleAddKeyword} type="button">
+            Add Keyword
+          </Button>
+        </div>
+        </div>
+        </CardContent>
+      </Card>
+      
 
-      {/* Job Description */}
-      <div className="space-y-2">
-        <Label htmlFor="job_description">Job Description</Label>
-        <Textarea
-          name="job_description"
-          id="job_description"
-          value={job.job_description}
-          onChange={handleChange}
-          required
-          placeholder="Enter Job Description"
-        />
-      </div>
+      <Card className="mt-8">
+        <CardHeader>
+          Información general
+        </CardHeader>
+       <CardContent>
+        <div className="space-y-6">
+          {/* Job Description */}
+          <div className="space-y-2">
+            <Label htmlFor="job_description">Detalles del Rol</Label>
+            <Textarea
+              name="job_description"
+              id="job_description"
+              value={job.job_description}
+              onChange={handleChange}
+              required
+              placeholder="Enter Job Description"
+            />
+          </div>
+          {/* Contact Email */}
+          <div className="space-y-2">
+            <Label htmlFor="email_applicants_receiver">Email para recibir los aplicantes</Label>
+            <Input
+              type="email"
+              name="email_applicants_receiver"
+              id="email_applicants_receiver"
+              value={job.email_applicants_receiver}
+              onChange={handleChange}
+              required
+              placeholder="Ingresá tu mail"
+            />
+            <p className="text-gray-500 text-xs">Este correo electrónico no es público (!). Recibirás nuevas solicitudes de empleo en esta dirección</p>
+          </div>
+          </div>
+        </CardContent>
+      </Card>
 
-      {/* Contact Email */}
-      <div className="space-y-2">
-        <Label htmlFor="email_applicants_receiver">Contact Email</Label>
-        <Input
-          type="email"
-          name="email_applicants_receiver"
-          id="email_applicants_receiver"
-          value={job.email_applicants_receiver}
-          onChange={handleChange}
-          required
-          placeholder="Enter Email"
-        />
-      </div>
-
+      <Card className="mt-8">
+        <CardHeader>
+          Información general
+        </CardHeader>
+       <CardContent>
+        <div className="space-y-6">
+        {/* Company Website */}
+        <div className="space-y-2">
+          <Label htmlFor="company_website">💻 Página web de la compañia</Label>
+          <Input
+            type="url"
+            name="company_website"
+            id="company_website"
+            value={job.company_website}
+            onChange={handleChange}
+            placeholder="www.ejemplo.com"
+          />
+          <p className="text-xs text-gray-500">Twitter username without @. Not required, but used to tag your company when we tweet out your job post.</p>
+        </div>
       {/* Company Email */}
-      <div className="space-y-2">
-        <Label htmlFor="company_email">Company Email</Label>
-        <Input
-          type="email"
-          name="company_email"
-          id="company_email"
-          value={job.company_email}
-          onChange={handleChange}
-          required
-          placeholder="Enter Company Email"
-        />
-      </div>
+        <div className="space-y-2">
+          <Label htmlFor="company_email">Email de la empresa (se mantiene privado y utilizado para invoices + edición)</Label>
+          <Input
+            type="email"
+            name="company_email"
+            id="company_email"
+            value={job.company_email}
+            onChange={handleChange}
+            required
+            placeholder="Enter Company Email"
+          />
+          <p className="text-xs text-gray-500">¡Asegúrate de que este correo electrónico sea accesible para ti! Lo utilizamos para enviar la factura y el enlace de edición. No podemos ni reenviaremos esto manualmente. Si usas el dominio de tu empresa (el mismo que el nombre de la empresa), mostraremos una etiqueta [Verificado] en tu oferta de trabajo.</p>
+        </div>
 
       {/* Invoice Company Email */}
       <div className="space-y-2">
-        <Label htmlFor="invoice_company_email">Invoice Company Email</Label>
+        <Label htmlFor="invoice_company_email">📬 Email para recibir invoices</Label>
         <Input
           type="email"
           name="invoice_company_email"
@@ -224,44 +292,17 @@ const JobForm: React.FC = () => {
           required
           placeholder="Enter Invoice Email"
         />
+        <p className="text-xs text-gray-500">También enviamos una copia de la factura y el enlace de edición aquí. Puedes poner el correo electrónico de tu departamento de finanzas o del contador de gastos para que reciban una copia de la factura para la contabilidad.</p>
       </div>
+    </div>
+</CardContent>
+</Card>
+      
 
-      {/* Company Website */}
-      <div className="space-y-2">
-        <Label htmlFor="company_website">Company Website</Label>
-        <Input
-          type="url"
-          name="company_website"
-          id="company_website"
-          value={job.company_website}
-          onChange={handleChange}
-          placeholder="Enter Company Website"
-        />
-      </div>
-
-      {/* Keywords */}
-      <div className="space-y-2">
-        <Label htmlFor="keywords">Keywords</Label>
-        <Input
-          type="text"
-          value={keywordInput}
-          onChange={(e) => setKeywordInput(e.target.value)}
-          placeholder="Enter Keyword"
-        />
-        <Button onClick={handleAddKeyword} type="button">
-          Add Keyword
-        </Button>
-        <div className="mt-2 flex flex-wrap gap-2">
-          {job.keywords.map((keyword, index) => (
-            <span key={index} className="inline-block px-3 py-1 bg-gray-200 rounded-full text-sm font-medium text-gray-700">
-              {keyword}
-            </span>
-          ))}
-        </div>
-      </div>
+      
 
       {/* Submit Button */}
-      <Button type="submit" disabled={loading}>
+      <Button className="mt-8" type="submit" disabled={loading}>
         {loading ? 'Creating...' : 'Create Job Listing'}
       </Button>
 
