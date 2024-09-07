@@ -152,7 +152,6 @@ const JobForm: React.FC = () => {
     <form onSubmit={handleSubmit}>
     <div className="grid grid-cols-12 gap-12 p-6">
        <div className="col-span-7">
-    
       <Card>
         <CardHeader>
           <CardTitle>
@@ -276,7 +275,6 @@ const JobForm: React.FC = () => {
         </CardContent>
       </Card>
       
-
       <Card className="mt-8">
         <CardHeader>
           <CardTitle>
@@ -372,7 +370,7 @@ const JobForm: React.FC = () => {
       {message && <p className="text-center text-green-600 mt-4">{message}</p>}
     
     </div>
-    <div className="col-span-5">
+    <div className="col-span-5 sticky top-4 self-start">
       <p className="text-xs text-gray-500">👍 Tu anuncio estará disponible por 180 días, siempre podés pausarlo</p>
     <Card className="mt-4">
       <CardHeader>

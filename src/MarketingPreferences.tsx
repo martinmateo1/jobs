@@ -1,17 +1,12 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-} from "./components/ui/Form";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from "./components/ui/Form";
 import { Switch } from "./components/ui/Switch";
 import { Badge } from "./components/ui/Badge";
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription } from './components/ui/Sheet';
 
 // Define a schema for validation
 const FormSchema = z.object({
@@ -78,6 +73,25 @@ const MarketingPreferences: React.FC<{
                   <FormLabel className="text-base text-sm">🚀 Enviar publicación a candidatos (+$5)</FormLabel>
                   <FormDescription>
                     Nuestra base cuenta con mas de 5.000 candidatos
+                    <Sheet>
+                        <SheetTrigger asChild>
+                            <Link to="#" className="text-blue-600 hover:underline">
+                                <p>¿Cómo funciona?</p>
+                            </Link>
+                        </SheetTrigger>
+                        {/* Content of the Sheet */}
+                        <SheetContent side="bottom">
+                            <SheetHeader>
+                                <SheetTitle>More Details</SheetTitle>
+                                    <SheetDescription>
+                                        Here are more details about the content of this section.
+                                    </SheetDescription>
+                                </SheetHeader>
+                            <div className="p-4">
+                                <p>This is the additional content inside the sheet. Customize this as needed.</p>
+                            </div>
+                        </SheetContent>
+                    </Sheet>
                   </FormDescription>
                 </div>
                 <FormControl>
@@ -99,9 +113,28 @@ const MarketingPreferences: React.FC<{
                 <div className="space-y-0.5">
                   <FormLabel className="text-base text-sm">🏹 Agregar a mi landing ($10/mes)<Badge className="ml-2" variant="destructive">Business</Badge></FormLabel>
                   <FormDescription>
-                    Tendrás tu publicación en una landing específica para tu empresa y podrás integrarla en tus sistemas 
-                  </FormDescription>
-                </div>
+                    <span className="mr-1">Tu publicación estará en la landing de tu empresa</span>
+                    <Sheet>
+                        <SheetTrigger asChild>
+                            <Link to="#" className="text-blue-600 hover:underline">
+                                <p>¿Cómo funciona?</p>
+                            </Link>
+                        </SheetTrigger>
+                        {/* Content of the Sheet */}
+                        <SheetContent side="bottom">
+                            <SheetHeader>
+                                <SheetTitle>More Details</SheetTitle>
+                                    <SheetDescription>
+                                        Here are more details about the content of this section.
+                                    </SheetDescription>
+                                </SheetHeader>
+                            <div className="p-4">
+                                <p>This is the additional content inside the sheet. Customize this as needed.</p>
+                            </div>
+                        </SheetContent>
+                    </Sheet>
+                </FormDescription>
+            </div>
                 <FormControl>
                   <Switch
                     checked={field.value}
