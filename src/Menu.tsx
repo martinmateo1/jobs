@@ -41,6 +41,15 @@ const Menu: React.FC = () => {
           } md:flex`}
         >
           <NavigationMenuList className="flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0">
+            
+          <NavigationMenuItem>
+              <NavigationMenuLink asChild>
+                <Link to="/" className="text-sm font-medium hover:underline hover:underline-offset-4">
+                  Home
+                </Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link to="/create-job" className="text-sm font-medium hover:underline hover:underline-offset-4">
