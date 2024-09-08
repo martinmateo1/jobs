@@ -4,14 +4,14 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink } from './components/ui/NavigationMenu';
-import { Button } from "./components/ui/Button";
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Create Job', href: '/create-job' },
+  { name: 'Inicio', href: '#inicio' },
+  { name: '¿Por qué Finejob?', href: '#por-que-finejob' },
+  { name: 'Beneficios', href: '#beneficios' },
+  { name: 'Testimonios', href: '#testimonios' },
+  { name: 'Pricing', href: '#pricing' },
   { name: 'Job Listings', href: '/job-listings' },
-  { name: 'Contact', href: '/contact' },
 ];
 
 const Menu: React.FC = () => {
@@ -20,10 +20,9 @@ const Menu: React.FC = () => {
   return (
     <header className="top-0 left-0 z-50 w-full bg-white shadow-sm">
       <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
-        {/* Logo */}
         <div className="flex lg:flex-1">
           <Link to="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+            <span className="sr-only">Finework</span>
             <img
               alt=""
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
@@ -32,7 +31,6 @@ const Menu: React.FC = () => {
           </Link>
         </div>
 
-        {/* Hamburger Menu for Mobile */}
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -44,24 +42,21 @@ const Menu: React.FC = () => {
           </button>
         </div>
 
-        {/* Main Navigation for Desktop */}
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <Link key={item.name} to={item.href} className="text-sm font-medium leading-6 text-gray-900 hover:underline hover:underline-offset-4">
+            <a key={item.name} href={item.href} className="text-sm font-medium leading-6 text-gray-900 hover:underline hover:underline-offset-4">
               {item.name}
-            </Link>
+            </a>
           ))}
         </div>
 
-        {/* Get Started Button for Desktop */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link to="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
+          <Link to="/create-job" className="text-sm font-semibold leading-6 text-gray-900">
+            Publicá tu búsqueda <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>
       </nav>
 
-      {/* Mobile Menu Dialog */}
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-50" />
         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
@@ -87,13 +82,13 @@ const Menu: React.FC = () => {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 {navigation.map((item) => (
-                  <Link
+                  <a
                     key={item.name}
-                    to={item.href}
+                    href={item.href}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     {item.name}
-                  </Link>
+                  </a>
                 ))}
               </div>
               <div className="py-6">

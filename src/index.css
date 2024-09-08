@@ -68,3 +68,6 @@
 #root {
   background:#F9FBFD;
 }
+html {
+  scroll-behavior: smooth;
+}

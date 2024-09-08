@@ -9,9 +9,9 @@ function classNames(...classes: (string | false | null | undefined)[]): string {
   }
   
   const includedFeatures = [
-    'Métodos de Pago Flexibles',
-    'Transparencia Total',
-    'Sin Costos Ocultos',
+    'Métodos de pago flexibles',
+    'Transparencia total',
+    'Sin costos ocultos',
     'Acceso a facturas y comprobantes ',
   ]
 
@@ -410,15 +410,13 @@ return (
     </div>
     
 
-
-
-  
-    <div className="overflow-hidden bg-white py-24 sm:py-32">
+ 
+    <div className="overflow-hidden bg-white py-24 sm:py-32" id="beneficios">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <div className="lg:ml-auto lg:pl-4 lg:pt-4">
             <div className="lg:max-w-lg">
-              <h2 className="text-base font-semibold leading-7 text-indigo-600">Deploy faster</h2>
+              <h2 className="text-base font-semibold leading-7 text-indigo-600">LinkedIn ya fué</h2>
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">No pierdas candidatos porque tu publicación expiró</p>
               <p className="mt-6 text-lg leading-8 text-gray-600">
               Como recruiter, cada día cuenta para encontrar al candidato ideal. Nuestra plataforma te permite mantener tu oferta activa el tiempo que necesites, con una única publicación y sin costos adicionales
@@ -517,7 +515,7 @@ return (
       </div>
     </div>
 
-    <div className="relative isolate bg-white pb-32 pt-24 sm:pt-32">
+    <div className="relative isolate bg-white pb-32 pt-24 sm:pt-32" id="testimonios">
       <div
         aria-hidden="true"
         className="absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-30 blur-3xl"
@@ -653,15 +651,14 @@ return (
       </div>
     </div>
 
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-white py-24 sm:py-32" id="pricing">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Publicaciones sin fecha de vencimiento, precios sin letra chica
-            </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-          Pagá una vez y mantené tus búsquedas activas, sin costos ocultos.
+        <h2 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Pricing</h2>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          Publicaciones sin fecha de vencimiento, precios sin letra chica
           </p>
+          
         </div>
         <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
           <div className="p-8 sm:p-10 lg:flex-auto">
