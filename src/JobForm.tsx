@@ -48,7 +48,7 @@ const features = [
   },
   {
     emoji: '✅',
-    title: 'Editable After Editable después de la publicación',
+    title: 'Editable después de la publicación',
     description: 'Podés editar tu publicación de empleo incluso después de haberla publicado, asegurándote de que siempre esté precisa y actualizada.',
   },
 ];

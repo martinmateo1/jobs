@@ -1,82 +1,113 @@
+'use client'
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Dialog, DialogPanel } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink } from './components/ui/NavigationMenu';
 import { Button } from "./components/ui/Button";
 
-const Menu: React.FC = () => {
-  const [isMenuOpen, setMenuOpen] = useState(false);
+const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'Create Job', href: '/create-job' },
+  { name: 'Job Listings', href: '/job-listings' },
+  { name: 'Contact', href: '/contact' },
+];
 
-  const toggleMenu = () => {
-    setMenuOpen(!isMenuOpen);
-  };
+const Menu: React.FC = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="top-0 left-0 z-50 w-full bg-background shadow-sm">
-      <div className="flex h-16 items-center justify-between px-4 md:px-6">
-        {/* Hamburger menu button for mobile */}
-        <button
-          className="md:hidden text-gray-600 focus:outline-none"
-          onClick={toggleMenu}
-          aria-label="Toggle Menu"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+    <header className="top-0 left-0 z-50 w-full bg-white shadow-sm">
+      <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
+        {/* Logo */}
+        <div className="flex lg:flex-1">
+          <Link to="/" className="-m-1.5 p-1.5">
+            <span className="sr-only">Your Company</span>
+            <img
+              alt=""
+              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              className="h-8 w-auto"
+            />
+          </Link>
+        </div>
+
+        {/* Hamburger Menu for Mobile */}
+        <div className="flex lg:hidden">
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(true)}
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
           >
-            {isMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-            )}
-          </svg>
-        </button>
+            <span className="sr-only">Open main menu</span>
+            <Bars3Icon aria-hidden="true" className="h-6 w-6" />
+          </button>
+        </div>
 
-        {/* Main Navigation using NavigationMenu from shadcn */}
-        <NavigationMenu
-          className={`absolute left-0 top-16 z-40 w-full flex-col bg-background md:flex md:flex-row md:static md:w-auto md:space-x-4 ${
-            isMenuOpen ? 'flex' : 'hidden'
-          } md:flex`}
-        >
-          <NavigationMenuList className="flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0">
-            
-          <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link to="/" className="text-sm font-medium hover:underline hover:underline-offset-4">
-                  Home
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
+        {/* Main Navigation for Desktop */}
+        <div className="hidden lg:flex lg:gap-x-12">
+          {navigation.map((item) => (
+            <Link key={item.name} to={item.href} className="text-sm font-medium leading-6 text-gray-900 hover:underline hover:underline-offset-4">
+              {item.name}
+            </Link>
+          ))}
+        </div>
 
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link to="/create-job" className="text-sm font-medium hover:underline hover:underline-offset-4">
-                  Create Job
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link to="/job-listings" className="text-sm font-medium hover:underline hover:underline-offset-4">
-                  Job Listings
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link to="/contact" className="text-sm font-medium hover:underline hover:underline-offset-4">
-                  Contact
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+        {/* Get Started Button for Desktop */}
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <Link to="#" className="text-sm font-semibold leading-6 text-gray-900">
+            Log in <span aria-hidden="true">&rarr;</span>
+          </Link>
+        </div>
+      </nav>
 
-        {/* Get Started button */}
-        <Button className="hidden md:block">Get Started</Button>
-      </div>
+      {/* Mobile Menu Dialog */}
+      <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
+        <div className="fixed inset-0 z-50" />
+        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div className="flex items-center justify-between">
+            <Link to="/" className="-m-1.5 p-1.5">
+              <span className="sr-only">Your Company</span>
+              <img
+                alt=""
+                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                className="h-8 w-auto"
+              />
+            </Link>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(false)}
+              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+            >
+              <span className="sr-only">Close menu</span>
+              <XMarkIcon aria-hidden="true" className="h-6 w-6" />
+            </button>
+          </div>
+          <div className="mt-6 flow-root">
+            <div className="-my-6 divide-y divide-gray-500/10">
+              <div className="space-y-2 py-6">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+              <div className="py-6">
+                <Link
+                  to="#"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Log in
+                </Link>
+              </div>
+            </div>
+          </div>
+        </DialogPanel>
+      </Dialog>
     </header>
   );
 };
