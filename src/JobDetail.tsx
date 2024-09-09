@@ -5,6 +5,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/Card";
 import { Button } from "./components/ui/Button";
 import { Skeleton } from "./components/ui/Skeleton"; // Import the Skeleton component
 import { CheckIcon,HandThumbUpIcon, PaperClipIcon, UserIcon, } from '@heroicons/react/20/solid'
+import {
+    BriefcaseIcon,
+    CalendarIcon,
+    ChevronDownIcon,
+    ChevronRightIcon,
+    CurrencyDollarIcon,
+    LinkIcon,
+    MapPinIcon,
+    PencilIcon,
+  } from '@heroicons/react/20/solid'
 
   
 const JobDetail: React.FC = () => {
@@ -64,9 +74,8 @@ const JobDetail: React.FC = () => {
   if (!job) {
     return <p>Job not found.</p>;
   }
-
   return (
-    <main className="py-10">
+    <main className="py-10 pt-24">
           {/* Page header */}
           <div className="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
             <div className="flex items-center space-x-5">
@@ -80,6 +89,7 @@ const JobDetail: React.FC = () => {
                   <span aria-hidden="true" className="absolute inset-0 rounded-full shadow-inner" />
                 </div>
               </div>
+
               <div>
                 <p className="text-sm font-medium text-gray-500 flex">
                   <a href="#" className="text-gray-900 flex items-center">
@@ -89,8 +99,15 @@ const JobDetail: React.FC = () => {
                   </a>{' '}
                   está contratando a 
                 </p>
-                <h1 className="text-4xl font-bold text-gray-900">{job.role_needed}</h1>
+                <h1 className="text-4xl mt-1 font-bold text-gray-900">{job.role_needed}</h1>
               </div>
+            </div>
+            <div>
+                <p className="text-sm text-gray-500">
+                    <a href="/" className="text-gray-500 hover:underline hover:text-gray-700">
+                        Powered by Finework
+                    </a>
+                </p>
             </div>
           </div>
 
@@ -99,25 +116,22 @@ const JobDetail: React.FC = () => {
               {/* Description list*/}
               <section aria-labelledby="applicant-information-title">
                 <div className="bg-white shadow sm:rounded-lg">
-                  
                   <div className="px-4 py-5 sm:px-6">
-                    <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                      <div className="sm:col-span-1">
-                        <dt className="text-sm font-medium text-gray-500">Modalidad de empleo</dt>
-                        <dd className="mt-1 text-sm text-gray-900">{job.employment_mode}</dd>
-                      </div>
-                      <div className="sm:col-span-1">
-                        <dt className="text-sm font-medium text-gray-500">Tipo de trabajo</dt>
-                        <dd className="mt-1 text-sm text-gray-900">{job.work_type}</dd>
-                      </div>
-                      <div className="sm:col-span-1">
-                        <dt className="text-sm font-medium text-gray-500">Industria</dt>
-                        <dd className="mt-1 text-sm text-gray-900">{job.industry}</dd>
-                      </div>
-                      <div className="sm:col-span-1">
-                        <dt className="text-sm font-medium text-gray-500">Contacto</dt>
-                        <dd className="mt-1 text-sm text-gray-900">{job.company_email}</dd>
-                      </div>
+                    <div className="max-w-3xl  lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
+                        <div className="mt-2 flex items-center text-sm text-gray-500 capitalize">
+                            <BriefcaseIcon aria-hidden="true" className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" />
+                            {job.work_type}
+                        </div>
+                        <div className="mt-2 flex items-center text-sm text-gray-500 capitalize">
+                            <MapPinIcon aria-hidden="true" className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" />
+                            {job.employment_mode}
+                        </div>
+                        <div className="mt-2 flex items-center text-sm text-gray-500 capitalize">
+                            <CurrencyDollarIcon aria-hidden="true" className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" />
+                            {job.industry}
+                        </div>
+                    </div>
+                    <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 mt-8">
                       <div className="sm:col-span-2">
                         <dt className="text-sm font-medium text-gray-500">Descripción de la búsqueda</dt>
                         <dd className="mt-1 text-sm text-gray-900">

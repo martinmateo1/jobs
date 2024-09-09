@@ -6,6 +6,7 @@ import JobList from './JobList';
 import JobDetail from './JobDetail'; // Import the JobDetail component
 import { Toaster } from 'sonner'; // Import the Toaster component from Sonner
 import LandingPage from './LandingPage';
+import NotFoundPage from './NotFoundPage'; // Adjust path as necessary
 import './index.css'; // Import Tailwind CSS
 
 const App: React.FC = () => {
@@ -27,6 +28,7 @@ const App: React.FC = () => {
             <Route path="/create-job" element={<JobForm />} />
             <Route path="/job-listings" element={<JobList />} />
             <Route path="/job/:id" element={<JobDetail />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
       </Router>
