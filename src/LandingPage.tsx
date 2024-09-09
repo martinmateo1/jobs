@@ -531,6 +531,65 @@ return (
       </div>
     </div>
 
+    <div className="bg-white py-24 sm:py-32" id="pricing">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl sm:text-center">
+        <h2 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Pricing</h2>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          Publicaciones sin fecha de vencimiento, precios sin letra chica
+          </p>
+          
+        </div>
+        <div className="shadow-sm mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
+          <div className="p-8 sm:p-10 lg:flex-auto">
+            <h3 className="text-2xl font-bold tracking-tight text-gray-900">Una publicación para encontrar a tu candidato ideal.</h3>
+            <p className="mt-6 text-base leading-7 text-gray-600">
+            Olvidate de tarifas recurrentes y pagos complicados. Con nuestra plataforma, hacé una sola inversión para mantener tus búsquedas activas sin restricciones de tiempo.
+            </p>
+            <div className="mt-10 flex items-center gap-x-4">
+              <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">¿Cómo es pagar en Finejob?</h4>
+              <div className="h-px flex-auto bg-gray-100" />
+            </div>
+            <ul
+              role="list"
+              className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6"
+            >
+              {includedFeatures.map((feature) => (
+                <li key={feature} className="flex gap-x-3">
+                  <CheckIcon aria-hidden="true" className="h-6 w-5 flex-none text-indigo-600" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
+            <div className="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
+              <div className="mx-auto max-w-xs px-8">
+                <p className="text-base font-semibold text-gray-600">Solo pagarás:</p>
+                <p className="mt-6 flex items-baseline justify-center gap-x-2">
+                  <span className="text-5xl font-bold tracking-tight text-gray-900">$329</span>
+                  <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">UYU</span>
+                  
+                </p>
+                <p className="mt-1 text-sm font-semibold leading-6 tracking-wide text-gray-600">por publicación, una única vez</p>
+                <a
+                  href="/create-job"
+                  className="mt-6 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >
+                  Publicá tu búsqueda hoy
+                </a>
+                <p className="mt-6 text-xs leading-5 text-gray-600">
+                    Facturas y recibos disponibles para facilitar el reembolso de tu empresa.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
     <div className="bg-white">
       <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-24 lg:px-8">
         <div className="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
@@ -578,65 +637,6 @@ return (
         </div>
       </div>
     </div>
-
-    <div className="bg-white py-24 sm:py-32" id="pricing">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl sm:text-center">
-        <h2 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Pricing</h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Publicaciones sin fecha de vencimiento, precios sin letra chica
-          </p>
-          
-        </div>
-        <div className="shadow-sm mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
-          <div className="p-8 sm:p-10 lg:flex-auto">
-            <h3 className="text-2xl font-bold tracking-tight text-gray-900">Una publicación para encontrar a tu candidato ideal.</h3>
-            <p className="mt-6 text-base leading-7 text-gray-600">
-            Olvidate de tarifas recurrentes y pagos complicados. Con nuestra plataforma, hacé una sola inversión para mantener tus búsquedas activas sin restricciones de tiempo.
-            </p>
-            <div className="mt-10 flex items-center gap-x-4">
-              <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">¿Cómo es pagar en Company?</h4>
-              <div className="h-px flex-auto bg-gray-100" />
-            </div>
-            <ul
-              role="list"
-              className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6"
-            >
-              {includedFeatures.map((feature) => (
-                <li key={feature} className="flex gap-x-3">
-                  <CheckIcon aria-hidden="true" className="h-6 w-5 flex-none text-indigo-600" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
-            <div className="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
-              <div className="mx-auto max-w-xs px-8">
-                <p className="text-base font-semibold text-gray-600">Solo pagarás:</p>
-                <p className="mt-6 flex items-baseline justify-center gap-x-2">
-                  <span className="text-5xl font-bold tracking-tight text-gray-900">$329</span>
-                  <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">UYU</span>
-                  
-                </p>
-                <p className="mt-1 text-sm font-semibold leading-6 tracking-wide text-gray-600">por publicación, una única vez</p>
-                <a
-                  href="/create-job"
-                  className="mt-6 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  Publicá tu búsqueda hoy
-                </a>
-                <p className="mt-6 text-xs leading-5 text-gray-600">
-                    Facturas y recibos disponibles para facilitar el reembolso de tu empresa.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
 
     <footer aria-labelledby="footer-heading" className="bg-white">
       <h2 id="footer-heading" className="sr-only">
