@@ -274,12 +274,9 @@ return (
         />
       </div>
       <p className="text-sm leading-6 text-gray-900">
-        <a href="#">
+        <a href="/create-job">
           <strong className="font-semibold">¡Lanzamos en 🇺🇾 Uruguay! </strong>
-          <svg viewBox="0 0 2 2" aria-hidden="true" className="mx-2 inline h-0.5 w-0.5 fill-current">
-            <circle r={1} cx={1} cy={1} />
-          </svg>
-          Para celebrar nuestro lanzamiento, te ofrecemos un <strong>10% de descuento en tus publicaciónes </strong>. 🎉 ¡Aprovechá esta oportunidad única! 🎉
+          y para celebrarlo, obtenés un <strong>10% de descuento en tus publicaciónes </strong>. 🎉 ¡Aprovechá esta oportunidad única! 🎉
         </a>
       </p>
       <div className="flex flex-1 justify-end">

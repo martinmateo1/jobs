@@ -39,19 +39,19 @@ type JobFormSchema = z.infer<typeof jobSchema>;
 const features = [
   {
     emoji: '✅',
-    title: 'Publicación de empleo optimizada para SEO',
-    description: 'Tu publicación será optimizada para los motores de búsqueda, aumentando su visibilidad y alcance a posibles candidatos.',
+    title: 'Publicación optimizada para SEO',
+    description: 'Lográ que tu oferta de empleo llegue a más candidatos calificados apareciendo en los primeros resultados de búsqueda.',
   },
   {
     emoji: '✅',
-    title: 'Fácil de compartir en redes sociales',
-    description: 'Comparte tu oferta de trabajo fácilmente en LinkedIn, Twitter y otras plataformas sociales para atraer a una audiencia más amplia.',
+    title: 'Lista de compartir en redes sociales',
+    description: 'Publicá tu búsqueda optimizada para captar la atención en LinkedIn, Twitter y más, atrayendo al talento donde más importa.',
   },
-  {
-    emoji: '✅',
-    title: 'Editable después de la publicación',
-    description: 'Podés editar tu publicación de empleo incluso después de haberla publicado, asegurándote de que siempre esté precisa y actualizada.',
-  },
+  // {
+  //   emoji: '✅',
+  //   title: 'Editable después de la publicación',
+  //   description: 'Actualizá y ajustá tu publicación en cualquier momento para reflejar exactamente lo que buscás, sin limitaciones.',
+  // },
 ];
 const JobForm: React.FC = () => {
   const [job, setJob] = useState({
@@ -381,7 +381,7 @@ const JobForm: React.FC = () => {
     
     </div>
     <div className="col-span-5 sticky top-4 self-start">
-      <p className="text-xs text-gray-500">👍 Tu anuncio estará disponible por 180 días, siempre podés pausarlo</p>
+      <p className="text-xs text-gray-500">👍 Tu publicación estará activa por 90 días, podrás pausarla cuando quieras.</p>
     <Card className="mt-4">
       <CardHeader>
         <CardTitle>Visibility Booster</CardTitle>
@@ -400,7 +400,7 @@ const JobForm: React.FC = () => {
       className="mt-6 w-full py-7 text-lg" // Adjust the width, padding, and font size for a larger button
       type="submit" 
       disabled={loading}>
-      {loading ? 'Creating...' : 'Publicar tu búsqueda por $12'}
+      {loading ? 'Creating...' : 'Publicá la búsqueda por UYU 329'}
     </Button>
     <div className="w-full max-w-2xl mx-auto mt-8">
       <FeatureList features={features} />

@@ -48,7 +48,7 @@ const MarketingPreferences: React.FC<{
             render={({ field }) => (
               <FormItem className="flex flex-row items-center justify-between">
                 <div className="space-y-0.5">
-                  <FormLabel className="text-base text-sm">✨ Mostrar el logo de mi empresa (+$1)</FormLabel>
+                  <FormLabel className="text-base text-sm">✅ Activar el logo de mi empresa <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-green-600/20">Incluído</span></FormLabel>
                   <FormDescription>
                   Tu logo estará visibile en la publicación
                   </FormDescription>
@@ -111,9 +111,9 @@ const MarketingPreferences: React.FC<{
             render={({ field }) => (
               <FormItem className="flex flex-row items-center justify-between">
                 <div className="space-y-0.5">
-                  <FormLabel className="text-base text-sm">🏹 Agregar a mi landing ($10/mes)<Badge className="ml-2" variant="destructive">Business</Badge></FormLabel>
+                  <FormLabel className="text-base text-sm">🏹 Agregar a mi landing ($49) <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Nuevo</span></FormLabel>
                   <FormDescription>
-                    <span className="mr-1">Tu publicación estará en la landing de tu empresa</span>
+                    <span className="mr-1">Tu publicación se publicará en la landing de tu empresa</span>
                     <Sheet>
                         <SheetTrigger asChild>
                             <Link to="#" className="text-blue-600 hover:underline">

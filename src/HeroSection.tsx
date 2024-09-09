@@ -89,7 +89,7 @@ export default function Example() {
                     </div>
                     <div className="mt-16">
                         <p className="text-xl text-medium mt-4 text-gray-700"><span aria-hidden="true">&rarr;</span> <span className="underline">Publicá los roles </span>que estás buscando</p>
-                        <p className="text-xl text-medium mt-4 text-gray-700"><span aria-hidden="true">&rarr;</span> <span className="underline">Creá una landing </span>con todos tus roles activos</p>
+                        <p className="text-xl text-medium mt-4 text-gray-700"><span aria-hidden="true">&rarr;</span> <span className="underline">Activá tu landing</span> con todos tus roles activos sin costo</p>
                         <p className="text-xl text-medium mt-4 text-gray-700"><span aria-hidden="true">&rarr;</span> <span className="underline">Integrala en tu página web</span> en 5 minutos y compartilas en redes</p>
                     </div>
                 </div>
