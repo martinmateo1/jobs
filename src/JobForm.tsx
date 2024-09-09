@@ -149,8 +149,14 @@ const JobForm: React.FC = () => {
   };
 
   return (
+    <div className="container mx-auto pb-16">
+      <div className="mt-8 mb-8">
+        <p className="text-sm font-medium text-gray-500">
+          </p>
+        <h1 className="text-4xl font-bold text-gray-900">Nueva publicación</h1>
+      </div>
     <form onSubmit={handleSubmit}>
-    <div className="grid grid-cols-12 gap-12 p-6">
+    <div className="grid grid-cols-12 gap-12">
        <div className="col-span-7">
       <Card>
         <CardHeader>
@@ -399,6 +405,7 @@ const JobForm: React.FC = () => {
   </div>
 </div>
 </form>
+</div>
   );
 };
 
