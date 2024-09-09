@@ -71,22 +71,27 @@ export default function Example() {
                     </a>
                     </div>
                   <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                  Reclutá mejor. <br></br>Sin costos ocultos
+                  Publicá tus búsquedas laborales en un solo lugar. <br></br>
                   </h1>
-                  <p className="mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
+                  <p className="mt-4 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
                   Extendé el alcance de tus publicaciones de trabajo más allá de LinkedIn y seguí recibiendo candidatos sin pagar de más.
                   </p>
-                  <div className="mt-10 flex items-center gap-x-6">
-                  <a
-                    href="/create-job"
-                    className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
-                    Publicá tu primer búsqueda
-                  </a>
-                  <a href="#pricing" className="text-md font-semibold leading-6 text-gray-900">
-                    Pricing <span aria-hidden="true">→</span>
-                  </a>
-                </div>
+                  <div className="mt-6 flex items-center gap-x-6">
+                    <a
+                        href="/create-job"
+                        className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >
+                        Comenzar ahora
+                    </a>
+                    <a href="#pricing" className="text-md font-semibold leading-6 text-gray-900">
+                        Pricing <span aria-hidden="true">→</span>
+                    </a>
+                    </div>
+                    <div className="mt-16">
+                        <p className="text-xl text-medium mt-4 text-gray-700"><span aria-hidden="true">&rarr;</span> <span className="underline">Publicá los roles </span>que estás buscando</p>
+                        <p className="text-xl text-medium mt-4 text-gray-700"><span aria-hidden="true">&rarr;</span> <span className="underline">Creá una landing </span>con todos tus roles activos</p>
+                        <p className="text-xl text-medium mt-4 text-gray-700"><span aria-hidden="true">&rarr;</span> <span className="underline">Integrala en tu página web</span> en 5 minutos y compartilas en redes</p>
+                    </div>
                 </div>
                 <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
                   <div className="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">

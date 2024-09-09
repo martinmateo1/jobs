@@ -291,17 +291,14 @@ return (
     </div>
     <div>
       <div className="relative isolate overflow-hidden bg-gradient-to-b from-indigo-100/20">
-      <HeroSection />
-        
+        <HeroSection />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32" />
       </div>
     </div>
-    
-
     <div className="bg-white pb-24 sm:pb-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <h2 className="text-center text-lg font-semibold leading-8 text-gray-900">
-            Trusted by the world’s most innovative teams
+            Trabajamos con las empresas más exitosas de la región:
             </h2>
             <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
             <img
@@ -621,7 +618,7 @@ return (
               <div className="mx-auto max-w-xs px-8">
                 <p className="text-base font-semibold text-gray-600">Solo pagarás:</p>
                 <p className="mt-6 flex items-baseline justify-center gap-x-2">
-                  <span className="text-5xl font-bold tracking-tight text-gray-900">$199</span>
+                  <span className="text-5xl font-bold tracking-tight text-gray-900">$329</span>
                   <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">UYU</span>
                   
                 </p>
