@@ -16,6 +16,7 @@ import MarketingPreferences from "./MarketingPreferences";
 import FeatureList from './FeatureList'; 
 import { useNavigate } from 'react-router-dom'; 
 import { toast } from 'sonner';
+import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 
 
 const jobSchema = z.object({
@@ -148,12 +149,16 @@ const JobForm: React.FC = () => {
   setLoading(false);
   };
 
+
+
   return (
     <div className="container mx-auto pb-16">
-      <div className="mt-8 mb-8">
-        <p className="text-sm font-medium text-gray-500">
-          </p>
-        <h1 className="text-4xl font-bold text-gray-900">Nueva publicación</h1>
+      <div className="pt-16 pb-8">
+      <a href="/" className="flex items-center text-gray-600 hover:underline hover:text-gray-700">
+        <ChevronLeftIcon className="h-4 w-4 mr-2" />
+          Volver a la página principal
+      </a>
+        <h1 className="text-4xl font-bold text-gray-900 mt-3">Nueva publicación</h1>
       </div>
     <form onSubmit={handleSubmit}>
     <div className="grid grid-cols-12 gap-12">
@@ -169,7 +174,6 @@ const JobForm: React.FC = () => {
       {/* Company Name */}
         <div className="space-y-2">
           <Label htmlFor="company_name">Nombre de tu compañia</Label>
-          
           <Input
             type="text"
             name="company_name"
