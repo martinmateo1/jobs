@@ -88,9 +88,9 @@ export default function Example() {
                     </a>
                     </div>
                     <div className="mt-16">
-                        <p className="text-xl text-medium mt-4 text-gray-700"><span aria-hidden="true">&rarr;</span> <span className="underline">Publicá los roles </span>que estás buscando</p>
-                        <p className="text-xl text-medium mt-4 text-gray-700"><span aria-hidden="true">&rarr;</span> <span className="underline">Activá tu landing</span> con todos tus roles activos sin costo</p>
-                        <p className="text-xl text-medium mt-4 text-gray-700"><span aria-hidden="true">&rarr;</span> <span className="underline">Integrala en tu página web</span> en 5 minutos y compartilas en redes</p>
+                        <p className="text-xl text-medium mt-4 text-gray-700"><span aria-hidden="true">&rarr;</span><span className="ml-1 underline">Publicá los roles </span>que estás buscando 👍</p>
+                        <p className="text-xl text-medium mt-4 text-gray-700"><span aria-hidden="true">&rarr;</span><span className="ml-1 underline">Activá tu landing</span> con todos tus roles activos sin costo ✅</p>
+                        <p className="text-xl text-medium mt-4 text-gray-700"><span aria-hidden="true">&rarr;</span><span className="ml-1 underline">Integrala en tu página web</span> en 5 minutos y compartilas en redes 🚀</p>
                     </div>
                 </div>
                 <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
