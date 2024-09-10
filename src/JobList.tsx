@@ -56,7 +56,7 @@ const JobList: React.FC = () => {
         <p className="text-base font-semibold text-indigo-600">Get the help you need</p>
         <h2 className="mt-4 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Búsquedas activas</h2>
         <p className="mt-2 text-lg leading-8 text-gray-600">
-        Explorá todas las oportunidades abiertas y encontrá el rol ideal para vos.
+        Explorá todas las oportunidades abiertas y encontrá el rol ideal para vos
         </p>
       </div>
       {loading ? (
